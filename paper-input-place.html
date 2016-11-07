@@ -23,7 +23,13 @@ Google Places Autocomplete attached to paper-input
     <template is="dom-if" if="[[apiKey]]" restamp="true">
       <google-maps-api api-key="[[apiKey]]" on-api-load="_mapsApiLoaded" maps-url="https://maps.googleapis.com/maps/api/js?region=NZ&callback=%%callback%%"></google-maps-api>
     </template>
-    <paper-input id="locationsearch" label="[[label]]" value="{{_value}}" invalid="[[invalid]]" disabled$="[[disabled]]" error-message="Invalid - please select a place">
+    <paper-input
+      id="locationsearch" label="[[label]]"
+      value="{{_value}}"
+      invalid="[[invalid]]"
+      disabled$="[[disabled]]"
+      error-message="Invalid - please select a place"
+      always-float-label="[[alwaysFloatLabel]]">
       <iron-icon icon="clear" suffix on-tap="_clearLocation"></iron-icon>
     </paper-input>
   </template>
@@ -65,6 +71,13 @@ Google Places Autocomplete attached to paper-input
         disabled: {
           type: Boolean,
           notify: true,
+          value: false
+        },
+        /**
+         * Allow pass through of always float label to paper-input
+         */
+        alwaysFloatLabel: {
+          type: Boolean,
           value: false
         },
         /** @private */
